@@ -17,7 +17,14 @@ contract NFT is ERC721URIStorage, Ownable
         totalSupply = _totalSupply;
     }
 
-    function mint(string memory _url) external onlyOwner {
+    /***
+     * @dev mint nft 
+     * 
+     * @param _uri is uri string of NFT
+     * 
+     * Only owner of NFT can call this function
+     */
+    function mint(string memory _uri) external onlyOwner {
         uint256 tokenId = getTokenCounter();
 
         require(tokenId <= totalSupply, "Reach limit total supply");
@@ -25,9 +32,14 @@ contract NFT is ERC721URIStorage, Ownable
         // mint NFT
         _safeMint(msg.sender, tokenId);
         // set token URI
-        _setTokenURI(tokenId, _url);
+        _setTokenURI(tokenId, _uri);
     }
 
+    /***
+     * @dev get token id of NFT
+     * 
+     * Only call in contract
+     */
     function getTokenCounter() internal returns (uint256) {
         tokenCounter = tokenCounter.add(1);
         return tokenCounter;
