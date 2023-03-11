@@ -13,7 +13,7 @@ contract NFT is ERC721URIStorage, Ownable
     uint256 tokenCounter;
     uint256 totalSupply;
 
-    constructor(uint256 _totalSupply)  ERC721("The Space NFT", "SpaceNFT") {
+    constructor(uint256 _totalSupply)  ERC721("The Moon NFT", "MoonNFT") {
         totalSupply = _totalSupply;
     }
 
