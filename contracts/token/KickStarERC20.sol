@@ -2,10 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-import "./interfaces/IBEP20.sol";
+import { IERC20 } from "../interfaces/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Kickstar is IBEP20, Ownable {
+contract KickStarERC20 is IERC20, Ownable {
     mapping(address => uint256) private _balances;
 
     mapping(address => mapping(address => uint256)) private _allowances;
@@ -16,7 +16,7 @@ contract Kickstar is IBEP20, Ownable {
     string private _name;
 
     constructor() {
-        _name = "Kickstar";
+        _name = "KickStar";
         _symbol = "KS";
         _decimals = 18;
         _totalSupply = 100000000 * (10 ** _decimals);
@@ -26,42 +26,42 @@ contract Kickstar is IBEP20, Ownable {
     /**
      * @dev Returns the token owner.
      */
-    function getOwner() external view override returns (address) {
+    function getOwner() public view override returns (address) {
         return owner();
     }
 
     /**
      * @dev Returns the token decimals.
      */
-    function decimals() external view override returns (uint8) {
+    function decimals() public view override returns (uint8) {
         return _decimals;
     }
 
     /**
      * @dev Returns the token symbol.
      */
-    function symbol() external view override returns (string memory) {
+    function symbol() public view override returns (string memory) {
         return _symbol;
     }
 
     /**
      * @dev Returns the token name.
      */
-    function name() external view override returns (string memory) {
+    function name() public view override returns (string memory) {
         return _name;
     }
 
     /**
      * @dev See {BEP20-totalSupply}.
      */
-    function totalSupply() external view override returns (uint256) {
+    function totalSupply() public view override returns (uint256) {
         return _totalSupply;
     }
 
     /**
      * @dev See {BEP20-balanceOf}.
      */
-    function balanceOf(address account) external view override returns (uint256) {
+    function balanceOf(address account) public view override returns (uint256) {
         return _balances[account];
     }
 
