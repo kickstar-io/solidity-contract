@@ -21,6 +21,10 @@ module.exports = {
     ],
   },
   networks: {
+    hardhat: {
+      blockGasLimit: 10000000,
+      allowUnlimitedContractSize: true,
+    },
     bscTestnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
       accounts: process.env.PRIVATE_KEY_TESTNET !== undefined
@@ -40,6 +44,20 @@ module.exports = {
       ? [process.env.PRIVATE_KEY]
       : [],
       chainId: 56,
+    },
+    arbitrum: {
+      url: "https://arb1.arbitrum.io/rpc",
+      accounts: process.env.PRIVATE_KEY !== undefined
+      ? [process.env.PRIVATE_KEY]
+      : [],
+      chainId: 42161,
+    },
+    arbTestnet: {
+      url: "https://goerli-rollup.arbitrum.io/rpc",
+      accounts: process.env.PRIVATE_KEY !== undefined
+      ? [process.env.PRIVATE_KEY]
+      : [],
+      chainId: 421613,
     },
   },
   abiExporter: {

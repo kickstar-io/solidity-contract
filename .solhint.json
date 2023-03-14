@@ -6,6 +6,8 @@
     "rules": {
         "imports-on-top": "error",
         "no-unused-vars": "error",
+        "no-global-import": "off",
+        "no-inline-assembly": "off",
         "code-complexity": [
             "error",
             9
